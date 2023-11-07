@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StereoRenderingMode: 1
   SeparateCullPass: 0
-  FoveatedRendering: 1
+  FoveatedRendering: 0
   ContextScalingFactor: 1
   FocusScalingFactor: 1
   Opaque: 0
