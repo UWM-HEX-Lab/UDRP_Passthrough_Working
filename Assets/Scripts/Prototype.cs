@@ -21,16 +21,19 @@ public class Prototype : MonoBehaviour
     public GameObject opponent1;
     public GameObject opponent2;
 
+    public float playerMoveSpeed = 1.0f;
+    public float cameraRotationSpeed = 50.0f;
+
     void Start()
     {
        State0();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Check for button press
-        if (Input.GetKeyDown(KeyCode.Space)) // Example: Spawn player on pressing Space
+        MovePlayers();
+        RotateCamera();
+        if (Input.GetKeyDown(KeyCode.Space)) 
         {
             TransitionState();
         }
@@ -75,6 +78,29 @@ public class Prototype : MonoBehaviour
             currentState = PlayerState.State0;
             State0();
             break;
+        }
+    }
+    void MovePlayers()
+    {
+        Vector3 movement = new Vector3(Mathf.Sin(Time.time) * Time.deltaTime * playerMoveSpeed, 0, 0);
+        teammate1.transform.position += 2 * movement;
+        teammate2.transform.position += 2 * movement;
+        teammate3.transform.position += 2 * movement;
+        goalie.transform.position += 2 * movement;
+        opponent1.transform.position += 2 * movement;
+        opponent2.transform.position += 2 * movement;
+    }
+
+    void RotateCamera()
+    {
+        float horizontalRotation = Input.GetAxis("Horizontal") * cameraRotationSpeed * Time.deltaTime;
+        float verticalRotation = -Input.GetAxis("Vertical") * cameraRotationSpeed * Time.deltaTime;
+
+        transform.Rotate(0, horizontalRotation, 0);
+        Camera camera = GetComponent<Camera>();
+        if (camera != null)
+        {
+            camera.transform.Rotate(verticalRotation, 0, 0);
         }
     }
 }
