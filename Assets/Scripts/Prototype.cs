@@ -37,28 +37,28 @@ public class Prototype : MonoBehaviour
     }
 
     void State1(){
-        teammate1.transform.position = new Vector3(-103, 2, 37);
-        teammate2.transform.position = new Vector3(-120, 2, 10);
-        teammate3.transform.position = new Vector3(0, -2, 0);
-        goalie.transform.position = new Vector3(-146, 2, 0);
-        opponent1.transform.position = new Vector3(-95, 2, 40);
-        opponent2.transform.position = new Vector3(0, -2, 0);
+        teammate1.transform.position = new Vector3(-103, -3, 37);
+        teammate2.transform.position = new Vector3(-120, -3, 10);
+        teammate3.transform.position = new Vector3(0, -10, 0);
+        goalie.transform.position = new Vector3(-146, -3, 0);
+        opponent1.transform.position = new Vector3(-95, -3, 40);
+        opponent2.transform.position = new Vector3(0, -10, 0);
     }
     void State2(){//change numbers
-        teammate1.transform.position = new Vector3(-103, 2, 37);
-        teammate2.transform.position = new Vector3(-120, 2, 10);
-        teammate3.transform.position = new Vector3(0, -2, 0);
-        goalie.transform.position = new Vector3(-146, 2, 0);
-        opponent1.transform.position = new Vector3(-95, 2, 40);
-        opponent2.transform.position = new Vector3(0, -2, 0);
+        teammate1.transform.position = new Vector3(-103, 0, 37);
+        teammate2.transform.position = new Vector3(-120, 0, 10);
+        teammate3.transform.position = new Vector3(0, -10, 0);
+        goalie.transform.position = new Vector3(-146, 0, 0);
+        opponent1.transform.position = new Vector3(-95, 0, 40);
+        opponent2.transform.position = new Vector3(0, -10, 0);
     }
     void State0(){
-        teammate1.transform.position = new Vector3(0, -2, 0);
-        teammate2.transform.position = new Vector3(0, -2, 0);
-        teammate3.transform.position = new Vector3(0, -2, 0);
-        goalie.transform.position = new Vector3(0, -2, 0);
-        opponent1.transform.position = new Vector3(0, -2, 0);
-        opponent2.transform.position = new Vector3(0, -2, 0);
+        teammate1.transform.position = new Vector3(0, -10, 0);
+        teammate2.transform.position = new Vector3(0, -10, 0);
+        teammate3.transform.position = new Vector3(0, -10, 0);
+        goalie.transform.position = new Vector3(0, -10, 0);
+        opponent1.transform.position = new Vector3(0, -10, 0);
+        opponent2.transform.position = new Vector3(0, -10, 0);
     }
     public void TransitionState() {
         switch (currentState)
