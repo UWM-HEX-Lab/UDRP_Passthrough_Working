@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using Random = System.Random;
 
 public class Prototype : MonoBehaviour
 {
@@ -14,21 +13,28 @@ public class Prototype : MonoBehaviour
     }
     private PlayerState currentState = PlayerState.State0;
 
+    Random rand = new Random();
+
     public GameObject teammate1;
     public GameObject teammate2; 
     public GameObject teammate3;
     public GameObject goalie;
     public GameObject opponent1;
     public GameObject opponent2;
+    public int rando1;
+    public int rando2;
+    public int rando3;
 
     public float playerMoveSpeed = 1.0f;
     public float cameraRotationSpeed = 50.0f;
 
     void Start()
     {
-       State0();
+        rando1 = (int) rand.Next(-3, 4);
+        rando2 = (int) rand.Next(-3, 4);
+        rando3 = (int) rand.Next(-3, 4);
+        State0();
     }
-
     void Update()
     {
         MovePlayers();
@@ -38,23 +44,6 @@ public class Prototype : MonoBehaviour
             TransitionState();
         }
     }
-
-    void State1(){
-        teammate1.transform.position = new Vector3(-103, -3, 37);
-        teammate2.transform.position = new Vector3(-120, -3, 10);
-        teammate3.transform.position = new Vector3(0, -10, 0);
-        goalie.transform.position = new Vector3(-146, -3, 0);
-        opponent1.transform.position = new Vector3(-95, -3, 40);
-        opponent2.transform.position = new Vector3(0, -10, 0);
-    }
-    void State2(){//change numbers
-        teammate1.transform.position = new Vector3(-103, 0, 37);
-        teammate2.transform.position = new Vector3(-120, 0, 10);
-        teammate3.transform.position = new Vector3(0, -10, 0);
-        goalie.transform.position = new Vector3(-146, 0, 0);
-        opponent1.transform.position = new Vector3(-95, 0, 40);
-        opponent2.transform.position = new Vector3(0, -10, 0);
-    }
     void State0(){
         teammate1.transform.position = new Vector3(0, -10, 0);
         teammate2.transform.position = new Vector3(0, -10, 0);
@@ -62,6 +51,22 @@ public class Prototype : MonoBehaviour
         goalie.transform.position = new Vector3(0, -10, 0);
         opponent1.transform.position = new Vector3(0, -10, 0);
         opponent2.transform.position = new Vector3(0, -10, 0);
+    }
+    void State1(){
+        teammate1.transform.position = new Vector3(-22, (float)1.7, 11);
+        teammate2.transform.position = new Vector3(-41, (float)1.7, -25);
+        teammate3.transform.position = new Vector3(0, -10, 0);
+        goalie.transform.position = new Vector3(-52, (float)1.7, 0);
+        opponent1.transform.position = new Vector3(-14, (float)1.7, 14);
+        opponent2.transform.position = new Vector3(0, -10, 0);
+    }
+    void State2(){
+        teammate1.transform.position = new Vector3(-20, (float)1.7, -23);
+        teammate2.transform.position = new Vector3(-39, (float)1.7, -15);
+        teammate3.transform.position = new Vector3(-27, (float)1.7, 26);
+        goalie.transform.position = new Vector3(-52, (float)1.7, 0);
+        opponent1.transform.position = new Vector3(-17, (float)1.7, -27);
+        opponent2.transform.position = new Vector3(-19, (float)1.7, 21);
     }
     public void TransitionState() {
         switch (currentState)
@@ -82,15 +87,23 @@ public class Prototype : MonoBehaviour
     }
     void MovePlayers()
     {
-        Vector3 movement = new Vector3(Mathf.Sin(Time.time) * Time.deltaTime * playerMoveSpeed, 0, 0);
-        teammate1.transform.position += 2 * movement;
-        teammate2.transform.position += 2 * movement;
-        teammate3.transform.position += 2 * movement;
-        goalie.transform.position += 2 * movement;
-        opponent1.transform.position += 2 * movement;
-        opponent2.transform.position += 2 * movement;
+        int random = (int) rand.Next(0, 4);
+        Vector3 movement;
+        if (random == 0)
+        {
+            movement = new Vector3(Mathf.Sin(Time.time) * Time.deltaTime * playerMoveSpeed, 0, 0);
+        }
+        else
+        {
+            movement = new Vector3(0, 0, Mathf.Sin(Time.time) * Time.deltaTime * playerMoveSpeed);
+        }
+        teammate1.transform.position += rando1 * movement;
+        teammate2.transform.position += rando2 * movement;
+        teammate3.transform.position += rando3 * movement;
+        goalie.transform.position += rando2 * movement;
+        opponent1.transform.position += rando3 * movement;
+        opponent2.transform.position += rando1 * movement;
     }
-
     void RotateCamera()
     {
         float horizontalRotation = Input.GetAxis("Horizontal") * cameraRotationSpeed * Time.deltaTime;
