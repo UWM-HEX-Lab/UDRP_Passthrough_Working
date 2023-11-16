@@ -21,18 +21,12 @@ public class Prototype : MonoBehaviour
     public GameObject goalie;
     public GameObject opponent1;
     public GameObject opponent2;
-    public int rando1;
-    public int rando2;
-    public int rando3;
 
     public float playerMoveSpeed = 1.0f;
     public float cameraRotationSpeed = 50.0f;
 
     void Start()
     {
-        rando1 = (int) rand.Next(-3, 4);
-        rando2 = (int) rand.Next(-3, 4);
-        rando3 = (int) rand.Next(-3, 4);
         State0();
     }
     void Update()
@@ -97,12 +91,12 @@ public class Prototype : MonoBehaviour
         {
             movement = new Vector3(0, 0, Mathf.Sin(Time.time) * Time.deltaTime * playerMoveSpeed);
         }
-        teammate1.transform.position += rando1 * movement;
-        teammate2.transform.position += rando2 * movement;
-        teammate3.transform.position += rando3 * movement;
-        goalie.transform.position += rando2 * movement;
-        opponent1.transform.position += rando3 * movement;
-        opponent2.transform.position += rando1 * movement;
+        teammate1.transform.position += movement;
+        teammate2.transform.position += 3 * movement;
+        teammate3.transform.position += 2 * movement;
+        goalie.transform.position += -1 * movement;
+        opponent1.transform.position += 3 * movement;
+        opponent2.transform.position += -2 * movement;
     }
     void RotateCamera()
     {
