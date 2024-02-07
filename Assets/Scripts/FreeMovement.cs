@@ -5,7 +5,7 @@ public class FreeMovement : MonoBehaviour
     public Transform head;
 
     [Header("Use WASD/QE/ZX to move in Play mode")]
-    public float moveSpeed = 10.0f;
+    public float moveSpeed = 80.0f;
     public float turnSpeed = 200.0f;
 
     [Header("Lock movement to horizontal place")]
