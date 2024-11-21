@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  - enabled: 1
+    path: Assets/Scenes/Soccer_Stadium_Daytime.unity
+    guid: 3c2ce1b6ebe28504d832b71e70f3b3a8
   m_configObjects:
     Varjo.XR.Settings: {fileID: 11400000, guid: 4a1577aa51b21ae4aa5f0eff7d649b64,
       type: 2}
